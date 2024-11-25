@@ -1,5 +1,5 @@
 
-export function addDataToLocalStorage(key, value) {
+export function setDataToLocalStorage(key, value) {
     try {
       const normolizedState = JSON.stringify(value);
       localStorage.setItem(key, normolizedState);
