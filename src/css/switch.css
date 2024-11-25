@@ -1,47 +1,19 @@
-:root {
-  --toggle-light: #e4e5e6;
-  --toggle-dark: #292929;
-  --main-background:#f0f0f0;
-  --main-font: #292929;
-}
-
-body {
-  background: var(--main-background);
-  color: var(--main-font);
-}
-
-h1,
-h2 {
-  color: var(--dark);
-  font-size: 4rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-section {
-  padding: 50px 0;
-  text-align: center;
-}
-
-p {
-  color: var(--grey);
-  font-style: italic;
-  margin-bottom: 2rem;
-}
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 30px;
+  width: 48px;
+  height: 24px;
 }
 
-/* Hide default html checkbox */
+
 .switch input {
   opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* The slider */
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -49,7 +21,8 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--toggle-light);
+  background-color: var(--switch-background);
+  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -58,48 +31,41 @@ p {
   content: '';
   height: 20px;
   width: 20px;
-  left: 32px;
-  bottom: 5px;
-  background-color: #fff;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
   transition: 0.4s;
+  box-shadow: 0 0px 15px var(--switch-background);
+  background: var(--switch-color) url('/img/circle.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 input:checked + .slider {
-  background: linear-gradient(90grad, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  background-color: var(--switch-background);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--switch-background);
 }
 
 input:checked + .slider:before {
-  transform: translateX(-24px);
+  -webkit-transform: translateX(31px);
+  -ms-transform: translateX(31px);
+  transform: translateX(31px);
+  background: var(--switch-background) url('/img/moon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.slider,
-.round {
+
+
+.slider.round {
   border-radius: 34px;
 }
 
-.round::before {
+.slider.round:before {
   border-radius: 50%;
-}
-
-/* /THEME/ */
-.dark {
-  --main-background: hsl(230, 17%, 14%);
-  --main-font: white;
-}
-
-.light {
-  --main-background: white;
-  --main-font: hsl(230, 17%, 14%);
-}
-
-.toggle-switch {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.toggle-switch p {
-  padding: 1em;
-}
-body.dark h2 {
-  color: #f2f2f2;
 }
